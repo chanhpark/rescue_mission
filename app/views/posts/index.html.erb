@@ -1,1 +1,6 @@
 <h1>where you post a new issue</h1>
+
+
+<% @all_posts.each do |post| %>
+<li><%= post.title %></li>
+<% end %>
