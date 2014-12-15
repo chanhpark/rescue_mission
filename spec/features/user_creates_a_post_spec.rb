@@ -9,8 +9,18 @@ So that I can receive help from others } do
   # - I must provide a description that is at least 150 characters long
 #   # - I must be presented with errors if I fill out the form incorrectly
 # context "visit page" do
-  it "visit page" do
+  it "creates a post with valid attributes" do
+
     visit '/posts'
-    expect(page).to have_content "where you post a new issue"
+
+    visit '/posts/new'
+    fill_in "Title", with: "rspec help"
+    fill_in "Description", with: "this is a really complicated problem"
+    click_on "Submit"
+
+    expect(page).to have_content "you have successfully submitted a post"
+    expect(page).to have_content "rspec help"
+    expect(page).to have_content "this is a really complicated problem"
+
   end
 end

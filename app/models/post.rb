@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
-  validates :title, precense: true
-  validates :description, precense: true
+  validates :title, presence: true
+  validates :description, presence: true
 end
