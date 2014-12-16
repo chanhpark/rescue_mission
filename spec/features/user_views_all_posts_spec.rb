@@ -12,11 +12,26 @@ feature "user views all posts", %q{
 } do
     it "view all posts" do
 
+      visit '/posts/new'
+      fill_in "Title", with: "rspec help"
+      fill_in "Description", with: "this is a really complicated problem"
+      click_on "Submit"
+
+      visit '/posts/new'
+      fill_in "Title", with: "asdfasdf"
+      fill_in "Description", with: "lets go eat dinner!"
+      click_on "Submit"
+
+      visit '/posts/new'
+      fill_in "Title", with: "i need help with arrays"
+      fill_in "Description", with: "[123,123123,4123123]"
+      click_on "Submit"
+
       visit '/posts'
 
-      expect(page).to have_content "asdf"
-      expect(page).to have_content "kkjkjkj"
-      expect(page).to have_content "asd"
+      expect(page).to have_content "rspec help"
+      expect(page).to have_content "asdfasdf"
+      expect(page).to have_content "i need help with arrays"
 
     end
   end
