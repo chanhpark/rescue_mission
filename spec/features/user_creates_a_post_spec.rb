@@ -21,6 +21,31 @@ So that I can receive help from others } do
     expect(page).to have_content "you have successfully submitted a post"
     expect(page).to have_content "rspec help"
     expect(page).to have_content "this is a really complicated problem"
+  end
 
+  it "creates a post with no valid title" do
+
+  visit '/posts/new'
+  fill_in "Description", with: "this is a really complicated problem"
+  click_on "Submit"
+
+  expect(page).to have_content "you must provide a title"
+  end
+
+  it "creates a post with no valid description" do
+
+  visit '/posts/new'
+  fill_in "Title", with: 'I need help with hashes'
+  click_on "Submit"
+
+  expect(page).to have_content "you must provide a description"
+  end
+
+  it "creates a post with no title and description" do
+
+  visit '/posts/new'
+  click_on "Submit"
+
+  expect(page).to have_content "Please provide a title and description"
   end
 end

@@ -10,9 +10,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-    redirect_to post_path(@post), notice: "you have successfully submitted a post"
-    else
-      flash[:notice] = "NOOOOOOO"
+      redirect_to post_path(@post), notice: "you have successfully submitted a post"
+
+    elsif @post.title.empty? && @post.description.empty?
+      flash[:notice] = "Please provide a title and description"
+      redirect_to new_post_path(@post)
+
+    elsif @post.title.empty?
+      flash[:notice] = "you must provide a title"
+      redirect_to new_post_path(@post)
+
+    else @post.description.empty?
+      flash[:notice] = "you must provide a description"
+      redirect_to new_post_path(@post)
     end
   end
 
