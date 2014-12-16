@@ -12,20 +12,15 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       redirect_to post_path(@post), notice: "You have successfully submitted a post."
-    elsif @post.title.empty? && @post.description.empty?
-      flash[:notice] = "you must provide a title and description"
-      render new_post_path(@post)
-    elsif @post.title.length <= 40
-      flash[:notice] = "you must provide a title with atleast 40 characters"
-      render new_post_path(@post)
-    elsif @post.description.length <= 150
-      flash[:notice] = "you must provide a description with atleast 150 characters"
-      render new_post_path(@post)
+    else
+      render 'new'
     end
   end
 
   def show
     @post = Post.find(params[:id])
+    @response = Response.new
+    @messages = Response.where(post_id: @post)
   end
 
 

@@ -39,11 +39,15 @@ feature "User creates a post", %q{
     it "creates a post with invalid title" do
       visit '/posts/new'
 
-      fill_in "Description", with: "This is a really complicated problem"
+      fill_in "Description", with: "This description has to be a minimum of 150 characters
+      words words words words words words words words words words words words words words words
+      words words words words words words words words words words words words words words words
+      words words words words words words words words words words words words words words words words
+      words words words words words words words words words words words words words words words words"
 
       click_on "Submit"
 
-      expect(page).to have_content "you must provide a title with atleast 40 characters"
+      expect(page).to have_content "Title can't be blank Title is too short (minimum is 40 characters)"
 
     end
 
@@ -55,7 +59,7 @@ feature "User creates a post", %q{
 
       click_on "Submit"
 
-      expect(page).to have_content "you must provide a description with atleast 150 characters"
+      expect(page).to have_content "Description can't be blank Description is too short (minimum is 150 characters)"
 
     end
 
@@ -64,7 +68,7 @@ feature "User creates a post", %q{
 
       click_on "Submit"
 
-      expect(page).to have_content "you must provide a title and description"
+      expect(page).to have_content "Title can't be blank Title is too short (minimum is 40 characters) Description can't be blank Description is too short (minimum is 150 characters) Title Description"
 
 
     end
@@ -82,7 +86,7 @@ feature "User creates a post", %q{
 
       click_on "Submit"
 
-      expect(page).to have_content "you must provide a title with atleast 40 characters"
+      expect(page).to have_content "Title is too short (minimum is 40 characters)"
 
     end
 
@@ -95,6 +99,6 @@ feature "User creates a post", %q{
 
       click_on "Submit"
 
-      expect(page).to have_content "you must provide a description with atleast 150 characters"
+      expect(page).to have_content "Description is too short (minimum is 150 characters) Title Description short description"
     end
   end
