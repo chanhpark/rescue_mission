@@ -14,17 +14,20 @@
       <% end %>
     </ul>
     <% end %>
-<%= form_for [@post, @response] do |f| %>
-<div>
-  <%=f.label :message %>
-  <%= f.text_area :message %><br>
-  <%= f.submit "Submit" %>
-</div>
-<% end %>
-
-<% @post.responses.each do |response| %>
-  <li><%= response.message %></li>
-<% end %>
-
-<%= link_to 'View all questions', posts_path %> |
-<%= link_to 'Edit Question', edit_post_path %>
+    <%= form_for [@post, @response] do |f| %>
+    <div>
+      <%=f.label :message %>
+      <%= f.text_area :message %><br>
+      <%= f.submit "Submit" %>
+    </div>
+    <% end %>
+    <h4> Answers </h4>
+    <table>
+      <% @post.responses.each do |response| %>
+      <li><ul><%= response.message %></li></td>
+        <%= link_to 'Destroy', [response.post, response],
+        method: :delete, data: { confirm: 'Are you sure?' } %></ul></li>
+        <% end %>
+      </table>
+      <%= link_to 'View all questions', posts_path %> |
+      <%= link_to 'Edit Question', edit_post_path(@post) %>

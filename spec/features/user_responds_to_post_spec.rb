@@ -63,6 +63,14 @@ Acceptance Criteria
 
   click_on "Submit"
 
+  expect(page).to have_content "You have successfully submitted a post."
+  expect(page).to have_content "This is a post with a title more than forty characters, I think............"
+  expect(page).to have_content "This description has to be a minimum of 150 characters
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words "
+
   fill_in "Message", with: "the answer is that you must look at all the pages and make sure the pages work"
 
   click_on "Submit"

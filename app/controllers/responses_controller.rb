@@ -16,6 +16,13 @@ class ResponsesController < ApplicationController
     def show
     end
 
+    def destroy
+      @post = Post.find(params[:post_id])
+      @response = @post.responses.find(params[:id])
+      @response.destroy
+      redirect_to post_path(@post)
+    end
+
   private
 
   def response_params
