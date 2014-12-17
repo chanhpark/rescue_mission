@@ -4,8 +4,14 @@
   Location: <%= @post.description %>
 </div>
 
-<%= render 'response_form'  %><br>
+<%= form_for [@post, @response] do |f| %>
+<div>
+  <%=f.label :message %>
+  <%= f.text_area :message %><br>
+  <%= f.submit "Submit" %>
+</div>
+<% end %>
 
-<% @messages.each do |mess| %>
-<li><%= mess.message %></li>
+<% @post.responses.each do |response| %>
+  <li><%= response.message %></li>
 <% end %>

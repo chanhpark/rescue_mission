@@ -9,13 +9,12 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to @post, notice: "You have successfully submitted a Message."
     else
-      render "show"
+      render "posts/show"
     end
   end
 
-  def show
-
-  end
+    def show
+    end
 
   private
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :posts, only: [:index, :new, :create, :show] do
+  resources :posts do
     resources :responses
   end
 

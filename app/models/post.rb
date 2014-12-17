@@ -5,4 +5,5 @@ class Post < ActiveRecord::Base
   validates :description,
     presence: true,
     length: {minimum: 150}
+    has_many :responses
 end
