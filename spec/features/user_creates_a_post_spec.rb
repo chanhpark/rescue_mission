@@ -18,7 +18,7 @@ feature "User creates a post", %q{
       visit '/posts/new'
 
       fill_in "Title", with: "This is a post with a title more than forty characters, I think............"
-      fill_in "Description", with: "This description has to be a minimum of 150 characters
+      fill_in "Description", with: "This description is too short (minimum of 150 characters)
       words words words words words words words words words words words words words words words
       words words words words words words words wyords words words words words words words words
       words words words words words words words words words words words words words words words words
@@ -29,9 +29,9 @@ feature "User creates a post", %q{
 
       expect(page).to have_content "You have successfully submitted a post"
       expect(page).to have_content "This is a post with a title more than forty characters, I think............"
-      expect(page).to have_content "This description has to be a minimum of 150 characters
+      expect(page).to have_content "This description is too short (minimum of 150 characters)
       words words words words words words words words words words words words words words words
-      words words words words words words words words words words words words words words words
+      words words words words words words words wyords words words words words words words words
       words words words words words words words words words words words words words words words words
       words words words words words words words words words words words words words words words words "
     end

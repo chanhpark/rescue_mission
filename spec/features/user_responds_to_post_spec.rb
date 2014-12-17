@@ -26,6 +26,8 @@ Acceptance Criteria
 
     fill_in "Message", with: "thats a really good point billy, you killin it right now but i have one recommendation going foward, gimme money, gimme money, gimme money, gimme money"
     click_on "Submit"
+
+    expect(page).to have_content "You have successfully submitted a Message."
   end
 
   it "fill out the form with invalid fields" do
@@ -37,11 +39,13 @@ Acceptance Criteria
   words words words words words words words words words words words words words words words
   words words words words words words words words words words words words words words words
   words words words words words words words words words words words words words words words words
-  words words words words words words words words words words words words words words words words word word words "
+  words words words words words words words words words words words words words words words words "
 
   click_on "Submit"
 
   fill_in "Message", with: "less than 50 characters"
+
+  click_on "Submit"
 
   expect(page).to have_content "Message is too short (minimum is 50 characters)"
   end
