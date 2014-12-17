@@ -24,6 +24,26 @@ Acceptance Criteria
 
     click_on "Submit"
 
-    fill_in "Message", with: "thats a really good point billy, you killin it right now but i have one recommendation going foward, gimme money"
+    fill_in "Message", with: "thats a really good point billy, you killin it right now but i have one recommendation going foward, gimme money, gimme money, gimme money, gimme money"
+    click_on "Submit"
   end
+
+  it "fill out the form with invalid fields" do
+
+  visit '/posts/new'
+
+  fill_in "Title", with: "This is a post with a title more than forty characters, I think............"
+  fill_in "Description", with: "This description has to be a minimum of 150 characters
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words word word words "
+
+  click_on "Submit"
+
+  fill_in "Message", with: "less than 50 characters"
+
+  expect(page).to have_content "Message is too short (minimum is 50 characters)"
+  end
+
 end

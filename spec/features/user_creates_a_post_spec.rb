@@ -20,7 +20,7 @@ feature "User creates a post", %q{
       fill_in "Title", with: "This is a post with a title more than forty characters, I think............"
       fill_in "Description", with: "This description has to be a minimum of 150 characters
       words words words words words words words words words words words words words words words
-      words words words words words words words words words words words words words words words
+      words words words words words words words wyords words words words words words words words
       words words words words words words words words words words words words words words words words
       words words words words words words words words words words words words words words words words "
 

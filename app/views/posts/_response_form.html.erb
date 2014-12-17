@@ -1,0 +1,7 @@
+<%= form_for [@post, @response] do |f| %>
+<div>
+  <%=f.label :message %>
+  <%= f.text_area :message %><br>
+  <%= f.submit "Submit" %>
+</div>
+<% end %>
