@@ -50,4 +50,24 @@ Acceptance Criteria
   expect(page).to have_content "Message is too short (minimum is 50 characters)"
   end
 
+  it "user can view all the answers on questions page" do
+
+  visit '/posts/new'
+
+  fill_in "Title", with: "This is a post with a title more than forty characters, I think............"
+  fill_in "Description", with: "This description has to be a minimum of 150 characters
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words
+  words words words words words words words words words words words words words words words words "
+
+  click_on "Submit"
+
+  fill_in "Message", with: "the answer is that you must look at all the pages and make sure the pages work"
+
+  click_on "Submit"
+
+  expect(page).to have_content "You have successfully submitted a Message."
+  expect(page).to have_content "the answer is that you must look at all the pages and make sure the pages work"
+  end
 end

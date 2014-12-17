@@ -1,7 +1,7 @@
-<h3><%= @post.title %></h3>
+<h3>Question: <%= @post.title %></h3>
 
 <div>
-  Location: <%= @post.description %>
+  Description: <%= @post.description %>
 </div>
 
 <% if @response.errors.any? %>
@@ -14,7 +14,6 @@
       <% end %>
     </ul>
     <% end %>
-
 <%= form_for [@post, @response] do |f| %>
 <div>
   <%=f.label :message %>
@@ -26,3 +25,6 @@
 <% @post.responses.each do |response| %>
   <li><%= response.message %></li>
 <% end %>
+
+<%= link_to 'View all questions', posts_path %> |
+<%= link_to 'Edit Question', edit_post_path %>
