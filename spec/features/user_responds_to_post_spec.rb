@@ -11,6 +11,15 @@ Acceptance Criteria
 - I must provide a description that is at least 50 characters long
 - I must be presented with errors if fill out the form incorrectly
 } do
+  before (:each) do
+    visit "/users/sign_up"
+    fill_in "Email", with: "hack@hack.com"
+    fill_in "Password", with: "asdfasdf"
+    fill_in "Password confirmation", with: "asdfasdf"
+    within ".new_user" do
+      click_on "Sign up"
+    end
+  end
 
   it "find a form to post a response" do
 

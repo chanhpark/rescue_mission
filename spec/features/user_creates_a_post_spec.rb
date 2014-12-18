@@ -13,6 +13,16 @@ feature "User creates a post", %q{
     # I must be presented with errors if I fill out the form incorrectly
 
     # context "with valid attributes" do
+    before (:each) do
+      visit "/users/sign_up"
+      fill_in "Email", with: "hack@hack.com"
+      fill_in "Password", with: "asdfasdf"
+      fill_in "Password confirmation", with: "asdfasdf"
+        within ".new_user" do
+        click_on "Sign up"
+        end
+    end
+
     it "creates a post with valid attributes" do
 
       visit '/posts/new'
@@ -101,4 +111,12 @@ feature "User creates a post", %q{
 
       expect(page).to have_content "Description is too short (minimum is 150 characters) Title Description short description"
     end
+
+    it "user logs out and tries to post a question" do
+    click_on "Logout"
+
+    click_on  "got a Q?"
+
+    expect(page).to have_content "You need to sign in or sign up before continuing."
   end
+end

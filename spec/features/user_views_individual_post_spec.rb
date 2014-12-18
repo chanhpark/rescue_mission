@@ -10,6 +10,15 @@ feature "user views details of a post", %q{
   - I must be able to get to this page from the questions index
   - I must see the question's title
   - I must see the question's description} do
+  before (:each) do
+    visit "/users/sign_up"
+    fill_in "Email", with: "hack@hack.com"
+    fill_in "Password", with: "asdfasdf"
+    fill_in "Password confirmation", with: "asdfasdf"
+    within ".new_user" do
+      click_on "Sign up"
+    end
+  end
 
   it "user views details of a post" do
 

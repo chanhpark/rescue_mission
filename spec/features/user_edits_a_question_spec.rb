@@ -11,6 +11,15 @@ feature "User creates a post", %q{
   - I must be presented with errors if I fill out the form incorrectly
   - I must be able to get to the edit page from the question details page
   } do
+    before (:each) do
+      visit "/users/sign_up"
+      fill_in "Email", with: "hack@hack.com"
+      fill_in "Password", with: "asdfasdf"
+      fill_in "Password confirmation", with: "asdfasdf"
+      within ".new_user" do
+        click_on "Sign up"
+      end
+    end
 
     it "edit a question" do
       visit '/posts/new'

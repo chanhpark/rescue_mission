@@ -11,6 +11,16 @@ feature "User can be able to delete a post", %q{
   - I must be able delete a question from the question details page
   - All answers associated with the question must also be deleted } do
 
+    before (:each) do
+      visit "/users/sign_up"
+      fill_in "Email", with: "hack@hack.com"
+      fill_in "Password", with: "asdfasdf"
+      fill_in "Password confirmation", with: "asdfasdf"
+      within ".new_user" do
+        click_on "Sign up"
+      end
+    end
+
     it "Delete a post from the details page" do
 
       visit '/posts/new'
@@ -63,7 +73,7 @@ feature "User can be able to delete a post", %q{
 
       click_on "Delete this question"
 
-      expect(page).to have_content "Here are a list of questions"
+      expect(page).to have_content "Recent Questions"
     end
 
   end

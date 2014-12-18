@@ -8,6 +8,16 @@ feature "user views all posts", %q{As a user
 
   - I must see the title of each question
   - I must see questions listed in order, most recently posted first} do
+    
+    before (:each) do
+      visit "/users/sign_up"
+      fill_in "Email", with: "hack@hack.com"
+      fill_in "Password", with: "asdfasdf"
+      fill_in "Password confirmation", with: "asdfasdf"
+      within ".new_user" do
+        click_on "Sign up"
+      end
+    end
 
     it "view all posts" do
 

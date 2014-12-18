@@ -12,18 +12,26 @@
 
   <%= form_for @post do |f| %>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <div class="row collapse">
+    <div class="small-3 colums">
+      <%= f.label :title, class: "rigt inline", title: "Minimum 40 characters", data: {tooltip: true } %>
+    </div>
+      <div class="small-9 column">
+        <%= f.text_field :title %>
+        </div>
+    </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %><br>
-  </div>
+    <div class="row collapse">
+      <div class="small-3 colums">
+        <%= f.label :description, class: "rigt inline", title: "Minimum 150 characters", data: {tooltip: true } %>
+      </div>
+      <div class="large-9 column">
+        <%= f.text_area :description %>
+      </div>
+    </div>
 
-  <div>
-    <%= f.submit "Submit" %>
+  <div class="row collapse">
+    <%= f.submit "Submit", class: "border radius"%>
   </div>
 
   <% end %>
